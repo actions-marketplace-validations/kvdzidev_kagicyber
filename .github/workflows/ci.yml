@@ -8,6 +8,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
+      # temporary: let every Node version finish and report
+      fail-fast: false
       matrix:
         node: [20, 22, 24]
     steps:
@@ -15,6 +17,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci --no-audit --no-fund
       - run: npm test
   test-windows:
     runs-on: windows-latest
@@ -23,6 +27,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
       - run: npm test
   lint:
     runs-on: ubuntu-latest

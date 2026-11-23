@@ -28,6 +28,11 @@ test('hostile HTML stays linear (no ReDoS)', () => {
   fast('unterminated meta', () => parseHtml('<meta'.repeat(40_000), 'https://a.example/'));
   fast('unterminated script', () => htmlToText('<script'.repeat(40_000)));
   fast('unterminated script in parse', () => parseHtml('<script>'.repeat(40_000), 'https://a.example/'));
+  // Every tag the parser extracts, unterminated or unclosed. `<div id="root"` used to run for minutes.
+  for (const t of ['<link', '<img', '<a', '<a>', '<form>', '<h2>', '<label>', '<input', '<title>', '<body>', '<svg', '<head', '<div id="root"', '<div id="root">']) {
+    fast(`unterminated ${t}`, () => parseHtml(t.repeat(40_000), 'https://a.example/'));
+  }
+  fast('unterminated tags in text', () => htmlToText('<x'.repeat(40_000)));
   fast('connection URL', () => scanText('postgres://a:'.repeat(50_000), 'x.js'));
   fast('JWT', () => scanText('eyJaaaaaaaaa.'.repeat(50_000), 'x.js'));
   fast('glob', () => globToRe(`${'*a'.repeat(14)}*b`).test('a'.repeat(40)));

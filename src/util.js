@@ -105,10 +105,29 @@ function stripBlocks(html, tag) {
 // eslint-disable-next-line no-control-regex -- matching control characters is the point
 export const stripControl = (s) => String(s).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/g, '');
 
+/**
+ * Replace every `<...>` (up to 8 KB inside) with a space. Same result as s.replace(/<[^>]{0,8192}>/g, ' '),
+ * but the regex rescans up to 8 KB for each `<` that is never closed, so a page of them took seconds.
+ */
+function stripTags(s) {
+  let out = '';
+  let i = 0;
+  let gt = -1;
+  for (let lt = s.indexOf('<'); lt !== -1; lt = s.indexOf('<', lt + 1)) {
+    if (gt <= lt) gt = s.indexOf('>', lt + 1);
+    if (gt === -1) break;
+    if (gt - lt - 1 > 8192) continue;
+    out += `${s.slice(i, lt)} `;
+    i = gt + 1;
+    lt = gt;
+  }
+  return out + s.slice(i);
+}
+
 export function htmlToText(html) {
   let s = String(html);
   for (const tag of ['script', 'style', 'noscript', '!--']) s = stripBlocks(s, tag);
-  return stripControl(decodeEntities(s.replace(/<[^>]{0,8192}>/g, ' ')))
+  return stripControl(decodeEntities(stripTags(s)))
     .replace(/\s+/g, ' ')
     .trim();
 }
