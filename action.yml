@@ -1,5 +1,5 @@
 name: KagiCyber audit
-description: Compliance (EU and 58 jurisdictions), security and SEO/GEO audit of a website. Writes a job summary, optional SARIF for code scanning, and fails the job on a severity you choose.
+description: Compliance (EU and 58 jurisdictions), security and SEO/GEO audit of a website.
 branding:
   icon: shield
   color: purple
