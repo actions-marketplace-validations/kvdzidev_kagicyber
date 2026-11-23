@@ -1,0 +1,22 @@
+{
+  "name": "kagicyber",
+  "version": "1.0.0",
+  "description": "Passive website audit: EU and national compliance for 58 jurisdictions with the maximum penalty on every row, leaked API keys and secrets, security hygiene and SEO/GEO, with the /kagicyber-audit skill.",
+  "author": {
+    "name": "KagiCyber",
+    "url": "https://kagicyber.com"
+  },
+  "homepage": "https://github.com/kvdzidev/kagicyber",
+  "repository": "https://github.com/kvdzidev/kagicyber",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "gdpr",
+    "cookies",
+    "compliance",
+    "audit",
+    "secrets",
+    "seo",
+    "geo"
+  ]
+}

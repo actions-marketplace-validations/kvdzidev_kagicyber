@@ -1,0 +1,10 @@
+node_modules
+test
+docs
+skills
+scripts
+.github
+.claude-plugin
+*.md
+.env
+.env.*

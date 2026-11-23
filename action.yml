@@ -1,0 +1,101 @@
+name: KagiCyber audit
+description: Compliance (EU and 58 jurisdictions), security and SEO/GEO audit of a website. Writes a job summary, optional SARIF for code scanning, and fails the job on a severity you choose.
+branding:
+  icon: shield
+  color: purple
+inputs:
+  url:
+    description: Site to audit (domain or URL)
+    required: true
+  fail-on:
+    description: Fail when a finding is at or above this severity (critical, high, medium, low). Empty means never fail.
+    required: false
+    default: ''
+  fail-under:
+    description: Fail when the compliance score is below this number. Empty means never fail.
+    required: false
+    default: ''
+  profile:
+    description: Request profile (quiet, balanced, fast)
+    required: false
+    default: balanced
+  country:
+    description: Jurisdiction used for maximum penalties, for example PL or DE. Empty means detected.
+    required: false
+    default: ''
+  include:
+    description: Extra jurisdictions to apply, for example DE,FR
+    required: false
+    default: ''
+  baseline:
+    description: Path to an earlier JSON result. With a baseline, only new findings fail the job.
+    required: false
+    default: ''
+  sarif:
+    description: Upload findings to GitHub code scanning (needs permissions security-events write)
+    required: false
+    default: 'false'
+  version:
+    description: kagicyber version from npm (for example 1.0.0). Empty runs the code of this action release.
+    required: false
+    default: ''
+outputs:
+  report:
+    description: Path of the Markdown report
+    value: kagicyber-report.md
+  html:
+    description: Path of the HTML report
+    value: kagicyber-report.html
+  json:
+    description: Path of the JSON result
+    value: kagicyber-report.json
+  sarif:
+    description: Path of the SARIF file
+    value: kagicyber.sarif
+  prompt:
+    description: Path of the fix prompt for an AI coding assistant
+    value: kagicyber-fix-prompt.md
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+    - name: Run KagiCyber
+      id: run
+      shell: bash
+      env:
+        KC_URL: ${{ inputs.url }}
+        KC_FAIL_ON: ${{ inputs.fail-on }}
+        KC_FAIL_UNDER: ${{ inputs.fail-under }}
+        KC_PROFILE: ${{ inputs.profile }}
+        KC_COUNTRY: ${{ inputs.country }}
+        KC_BASELINE: ${{ inputs.baseline }}
+        KC_INCLUDE: ${{ inputs.include }}
+        KC_VERSION: ${{ inputs.version }}
+      run: |
+        ARGS=(--md kagicyber-report.md --html kagicyber-report.html --json kagicyber-report.json --sarif kagicyber.sarif --prompt kagicyber-fix-prompt.md --profile "$KC_PROFILE" --quiet)
+        [ -n "$KC_INCLUDE" ] && ARGS+=(--include "$KC_INCLUDE")
+        [ -n "$KC_FAIL_ON" ] && ARGS+=(--fail-on "$KC_FAIL_ON")
+        [ -n "$KC_FAIL_UNDER" ] && ARGS+=(--fail-under "$KC_FAIL_UNDER")
+        [ -n "$KC_COUNTRY" ] && ARGS+=(--country "$KC_COUNTRY")
+        [ -n "$KC_BASELINE" ] && ARGS+=(--baseline "$KC_BASELINE")
+        set +e
+        if [ -n "$KC_VERSION" ]; then
+          npx --yes "kagicyber@$KC_VERSION" audit "$KC_URL" "${ARGS[@]}"
+        else
+          node "$GITHUB_ACTION_PATH/bin/kagicyber.js" audit "$KC_URL" "${ARGS[@]}"
+        fi
+        CODE=$?
+        set -e
+        [ -f kagicyber-report.md ] && cat kagicyber-report.md >> "$GITHUB_STEP_SUMMARY"
+        echo "code=$CODE" >> "$GITHUB_OUTPUT"
+    - name: Upload SARIF
+      if: inputs.sarif == 'true' && always()
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: kagicyber.sarif
+        category: kagicyber
+    - name: Apply exit code
+      shell: bash
+      run: exit ${{ steps.run.outputs.code }}

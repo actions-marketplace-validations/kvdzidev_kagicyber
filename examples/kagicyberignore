@@ -1,0 +1,12 @@
+# Copy to .kagicyberignore in your project root.
+# One entry per line: a check ID, a finding fingerprint, or path:<glob> for `kagicyber scan`.
+
+# We publish no accessibility statement yet (tracked in issue #12)
+EU-A10
+
+# Images are served by a CDN that negotiates the format
+SEO-21
+
+# Generated files
+path:dist/**
+path:**/*.min.js

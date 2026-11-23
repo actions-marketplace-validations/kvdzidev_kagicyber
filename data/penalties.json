@@ -1,0 +1,60 @@
+{
+  "_note": "Indicative statutory maxima as of November 2026. Not predictions. Items marked verify need confirmation in a primary source.",
+  "EU": [
+    { "law": "GDPR", "max": "EUR 20M or 4% of worldwide annual turnover (whichever is higher)", "triggers": ["EU-A2", "EU-A3", "EU-A4", "EU-A6"] },
+    { "law": "Consumer law (Omnibus, widespread infringements)", "max": "at least 4% of annual turnover in the member states concerned, or EUR 2M where turnover is unknown", "triggers": ["SHOP", "EU-A8"] },
+    { "law": "DSA", "max": "6% of worldwide annual turnover", "triggers": ["SAAS-01", "SAAS-02"] },
+    { "law": "AI Act art. 50", "max": "EUR 15M or 3% of worldwide annual turnover", "triggers": ["EU-A7"] }
+  ],
+  "PL": [
+    { "law": "UOKiK (consumer collective interests)", "max": "up to 10% of turnover", "triggers": ["PL-09", "SHOP"] },
+    { "law": "UKE under Prawo komunikacji elektronicznej", "max": "up to 3% of revenue (verify)", "triggers": ["PL-06"] },
+    { "law": "UODO (GDPR)", "max": "EUR 20M or 4%", "triggers": ["PL-07", "PL-08"] }
+  ],
+  "DE": [
+    { "law": "Impressum (§ 33 DDG)", "max": "up to EUR 50,000", "triggers": ["DE-01", "DE-02", "DE-03", "DE-04"] },
+    { "law": "TDDDG cookies", "max": "up to EUR 300,000", "triggers": ["DE-05"] },
+    { "law": "Abmahnung (competitors / associations)", "max": "cease-and-desist costs + contractual penalties", "triggers": ["DE-07", "DE-08", "DE-09", "DE-10", "DE-11"] }
+  ],
+  "AT": [{ "law": "ECG / MedienG", "max": "administrative fines up to EUR 3,000 (ECG) and EUR 20,000 (MedienG) (verify)", "triggers": ["AT-01", "AT-02", "AT-03"] }],
+  "FR": [
+    { "law": "Missing mentions légales (LCEN)", "max": "EUR 375,000 for legal entities, EUR 75,000 + 1 year for individuals", "triggers": ["FR-01", "FR-04", "FR-05"] },
+    { "law": "CNIL cookies", "max": "scales with worldwide turnover (Google EUR 325M, Shein EUR 150M in 2025) (verify cap)", "triggers": ["FR-06"] },
+    { "law": "DGCCRF consumer law", "max": "administrative fines up to EUR 75,000 per breach for legal entities", "triggers": ["FR-08", "FR-09", "FR-10"] }
+  ],
+  "IT": [{ "law": "AGCM unfair commercial practices", "max": "up to EUR 10M or 4% of turnover", "triggers": ["SHOP", "EU-A8"] }, { "law": "Garante (GDPR / cookies)", "max": "EUR 20M or 4%", "triggers": ["IT-02", "IT-03"] }],
+  "ES": [{ "law": "LSSI-CE cookies and aviso legal", "max": "EUR 30k (minor) / EUR 150k (serious) / EUR 600k (very serious)", "triggers": ["ES-01", "ES-02", "ES-04"] }],
+  "NL": [{ "law": "ACM (Telecommunicatiewet)", "max": "up to EUR 900,000 per violation or 10% of turnover", "triggers": ["NL-04"] }],
+  "IE": [{ "law": "ePrivacy Regulations (marketing)", "max": "up to EUR 250,000 per offence for companies (criminal)", "triggers": ["IE-03"] }],
+  "GB": [
+    { "law": "UK GDPR and PECR (after DUAA 2025)", "max": "£17.5M or 4% of global turnover", "triggers": ["GB-02", "GB-03"] },
+    { "law": "DMCCA 2024 (CMA direct enforcement)", "max": "up to 10% of global turnover", "triggers": ["GB-05", "GB-06"] }
+  ],
+  "CH": [{ "law": "FADP criminal fines", "max": "up to CHF 250,000 on responsible individuals", "triggers": ["CH-01"] }],
+  "TR": [{ "law": "KVKK administrative fines", "max": "up to ~TRY 17.1M per violation (2026 indexation)", "triggers": ["TR-01", "TR-02", "TR-03"] }],
+  "US": [
+    { "law": "FTC Act / COPPA", "max": "civil penalty ~$53,088 per violation", "triggers": ["US-01", "US-02", "US-04"] },
+    { "law": "TCPA", "max": "$500-$1,500 per message (private actions)", "triggers": ["US-06"] }
+  ],
+  "US-CA": [
+    { "law": "CCPA", "max": "$2,663 per violation / $7,988 per intentional violation", "triggers": ["USCA-03", "USCA-04", "USCA-05"] },
+    { "law": "CIPA (private suits)", "max": "$5,000 per violation", "triggers": ["USCA-06"] }
+  ],
+  "US-STATES": [{ "law": "State AG enforcement", "max": "typically $7,500 per violation (Colorado up to $20,000)", "triggers": ["USST-01", "USST-02"] }],
+  "CA": [
+    { "law": "Québec Law 25", "max": "administrative penalties up to C$10M or 2%; penal fines up to C$25M or 4%", "triggers": ["CAN-03", "CAN-04"] },
+    { "law": "CASL", "max": "up to C$10M per violation", "triggers": ["CAN-02"] },
+    { "law": "Competition Act", "max": "the greater of CAD 10M (CAD 15M for repeat orders), 3× the benefit, or 3% of worldwide gross revenue", "triggers": ["CAN-06"] }
+  ],
+  "BR": [{ "law": "LGPD", "max": "2% of Brazilian revenue, capped at R$50M per infraction", "triggers": ["BR-01"] }],
+  "KR": [{ "law": "PIPA", "max": "up to 3% of total revenue (10% in aggravated cases, 2026 amendment)", "triggers": ["KR-01"] }],
+  "CN": [{ "law": "PIPL", "max": "up to CNY 50M or 5% of previous-year revenue", "triggers": ["CN-02", "CN-03"] }],
+  "IN": [{ "law": "DPDP Act (from 13 May 2027)", "max": "up to INR 250 crore per breach", "triggers": ["IN-04"] }],
+  "AU": [{ "law": "Privacy Act", "max": "the greater of A$50M, 3× the benefit, or 30% of adjusted turnover", "triggers": ["AU-01", "AU-03"] }, { "law": "Australian Consumer Law", "max": "the greater of A$50M, 3× the benefit, or 30% of adjusted turnover", "triggers": ["AU-05"] }],
+  "SG": [{ "law": "PDPA", "max": "up to 10% of Singapore turnover or S$1M", "triggers": ["SG-01"] }],
+  "VN": [{ "law": "PDPL", "max": "up to 5% of revenue for cross-border transfer breaches", "triggers": ["VN-01"] }],
+  "SA": [{ "law": "PDPL", "max": "up to SAR 5M (doubled for repeat offences) + criminal liability", "triggers": ["SA-01"] }],
+  "NG": [{ "law": "NDPA", "max": "the higher of 2% of annual gross revenue or ₦10M for data controllers and processors of major importance (₦2M for others)", "triggers": ["NG-01", "NG-02"] }],
+  "ZA": [{ "law": "POPIA", "max": "up to R10M and/or 10 years' imprisonment", "triggers": ["ZA-03"] }],
+  "KE": [{ "law": "Data Protection Act", "max": "KES 5M or 1% of turnover, whichever is lower", "triggers": ["KE-01", "KE-02"] }]
+}

@@ -1,0 +1,28 @@
+# .github/workflows/kagicyber.yml: audit a site on every push and once a month,
+# keep the previous result as a baseline and fail only on new HIGH findings.
+name: KagiCyber
+on:
+  push:
+  schedule:
+    - cron: '17 6 1 * *'
+permissions:
+  contents: read
+  security-events: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: baseline.json
+          key: kagicyber-baseline-${{ github.run_id }}
+          restore-keys: kagicyber-baseline-
+      - uses: kvdzidev/kagicyber@v1
+        with:
+          url: https://www.example.com
+          fail-on: high
+          baseline: ${{ hashFiles('baseline.json') != '' && 'baseline.json' || '' }}
+          sarif: true
+      - run: cp kagicyber-report.json baseline.json
+        if: always()

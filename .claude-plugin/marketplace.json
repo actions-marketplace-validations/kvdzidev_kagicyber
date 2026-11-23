@@ -1,0 +1,19 @@
+{
+  "name": "kagicyber",
+  "owner": {
+    "name": "KagiCyber",
+    "url": "https://kagicyber.com"
+  },
+  "metadata": {
+    "description": "KagiCyber plugins for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "kagicyber",
+      "source": "./",
+      "description": "Passive website audit: EU and national compliance for 58 jurisdictions with the maximum penalty on every row, leaked API keys and secrets, security hygiene and SEO/GEO, with the /kagicyber-audit skill.",
+      "version": "1.0.0",
+      "category": "security"
+    }
+  ]
+}

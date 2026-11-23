@@ -1,0 +1,83 @@
+{
+  "name": "kagicyber",
+  "version": "1.0.0",
+  "description": "Passive website audit: compliance (EU baseline plus 58 jurisdictions, maximum penalty on every row), leaked API keys and secrets, security hygiene and SEO/GEO. Zero dependencies, SARIF, JUnit and HTML output, Claude skill included.",
+  "type": "module",
+  "bin": {
+    "kagicyber": "bin/kagicyber.js"
+  },
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "data/",
+    "skills/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "pretest": "node scripts/build-collector.mjs",
+    "lint": "eslint .",
+    "build:collector": "node scripts/build-collector.mjs",
+    "start": "node bin/kagicyber.js"
+  },
+  "keywords": [
+    "accessibility",
+    "ai-crawlers",
+    "audit",
+    "ccpa",
+    "claude",
+    "claude-code",
+    "cli",
+    "compliance",
+    "cookie-consent",
+    "cookies",
+    "dsa",
+    "eprivacy",
+    "gdpr",
+    "geo",
+    "iac",
+    "junit",
+    "lgpd",
+    "llms-txt",
+    "privacy",
+    "sarif",
+    "sast",
+    "secrets",
+    "security",
+    "security-headers",
+    "seo"
+  ],
+  "author": "KagiCyber",
+  "license": "MIT",
+  "homepage": "https://kagicyber.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kvdzidev/kagicyber.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kvdzidev/kagicyber/issues"
+  },
+  "peerDependencies": {
+    "playwright-core": ">=1.40"
+  },
+  "peerDependenciesMeta": {
+    "playwright-core": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0"
+  }
+}
