@@ -92,7 +92,7 @@ runs:
         echo "code=$CODE" >> "$GITHUB_OUTPUT"
     - name: Upload SARIF
       if: inputs.sarif == 'true' && always()
-      uses: github/codeql-action/upload-sarif@v3
+      uses: github/codeql-action/upload-sarif@v4
       with:
         sarif_file: kagicyber.sarif
         category: kagicyber
