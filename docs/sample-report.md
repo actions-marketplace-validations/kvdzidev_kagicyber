@@ -32,7 +32,7 @@
 
 | ID | Requirement | Status | Evidence | Legal basis | Max penalty |
 |---|---|---|---|---|---|
-| C-01 | Operator identity: geographic address, registration/VAT number, e-mail | PASS | Found: registration/tax ID ("NIP 584-287-74-33 "), address ("ul. Przykładowa 1"), e-mail. | Directive 2000/31/EC art. 5; national e-commerce law (e.g. art. 5 UŚUDE, § 5 DDG) | No dedicated fine for art. 5 UŚUDE; misleading consumers can trigger UOKiK fines up to 10% of the previous year's turnover |
+| C-01 | Operator identity: geographic address, registration/VAT number, e-mail | PASS | Found: registration/tax ID ("NIP 123-456-78-90 "), address ("ul. Przykładowa 1"), e-mail. | Directive 2000/31/EC art. 5; national e-commerce law (e.g. art. 5 UŚUDE, § 5 DDG) | No dedicated fine for art. 5 UŚUDE; misleading consumers can trigger UOKiK fines up to 10% of the previous year's turnover |
 | C-02 | Privacy policy linked from the homepage | PASS | Link "Polityka prywatności" to https://example-studio.pl/polityka-prywatnosci.html | GDPR art. 12-13 | UODO (GDPR art. 83(5)): up to EUR 20M or 4% of worldwide annual turnover |
 | C-03 | Privacy policy loads and is readable | FAIL | Broken character encoding (8 garbled sequences such as "Ĺ›"). | GDPR art. 12(1): clear and plain language | UODO (GDPR art. 83(5)): up to EUR 20M or 4% of worldwide annual turnover |
 | C-04 | Privacy policy covers the core GDPR art. 13 information | PARTIAL | 4/7 elements found (source: page HTML); missing: legal basis, data-subject rights, recipients. Not named: FormSubmit. | GDPR art. 13(1)-(2) | UODO (GDPR art. 83(5)): up to EUR 20M or 4% of worldwide annual turnover |
@@ -51,7 +51,7 @@
 
 | ID | Requirement | Status | Evidence | Legal basis | Max penalty |
 |---|---|---|---|---|---|
-| EU-A1a | Operator legal name and legal form shown | PASS | Found: "ści Regulamin Kontakt Przykładowa Firma sp. z o.o., NIP 584-287-74-33 Polityka prywatnoĹ›" | Directive 2000/31/EC art. 5(1)(a) | No dedicated fine for art. 5 UŚUDE; misleading consumers can trigger UOKiK fines up to 10% of the previous year's turnover |
+| EU-A1a | Operator legal name and legal form shown | PASS | Found: "ści Regulamin Kontakt Przykładowa Firma sp. z o.o., NIP 123-456-78-90 Polityka prywatnoĹ›" | Directive 2000/31/EC art. 5(1)(a) | No dedicated fine for art. 5 UŚUDE; misleading consumers can trigger UOKiK fines up to 10% of the previous year's turnover |
 | EU-A2b | Privacy notice: recipients and international transfers | FAIL | 0/2 elements found; missing: recipients, transfers / safeguards. | GDPR art. 13(1)(e),(f) | GDPR: EUR 20M or 4% of worldwide annual turnover (whichever is higher) |
 | EU-A2e | Privacy notice: DPO contact and automated decisions | PARTIAL | 0/2 elements found; missing: DPO / data contact, automated decisions / profiling. | GDPR art. 13(1)(b), 13(2)(f) | GDPR: EUR 20M or 4% of worldwide annual turnover (whichever is higher) |
 | EU-A2f | Privacy notice in the site language | PASS | privacy page language: pl. | GDPR art. 12(1) | GDPR: EUR 20M or 4% of worldwide annual turnover (whichever is higher) |
@@ -67,7 +67,7 @@
 |---|---|---|---|---|---|
 | PL-01 | Regulamin świadczenia usług drogą elektroniczną published (verify) | PASS | Link "Regulamin" to https://example-studio.pl/regulamin.html | Art. 8 ustawy o świadczeniu usług drogą elektroniczną (UŚUDE) | No dedicated fine for art. 5 UŚUDE; misleading consumers can trigger UOKiK fines up to 10% of the previous year's turnover |
 | PL-02 | Regulamin covers the complaint procedure (verify) | FAIL | Not found in terms text. | Art. 8 ust. 3 pkt 4 UŚUDE | UOKiK (collective consumer interests): up to 10% of the previous year's turnover |
-| PL-03 | NIP shown | PASS | Found: "n Kontakt Przykładowa Firma sp. z o.o., NIP 584-287-74-33 Polityka prywatnoĹ›ci Polityka prywatno" | Art. 5 UŚUDE; art. 206 KSH | No dedicated fine for art. 5 UŚUDE; misleading consumers can trigger UOKiK fines up to 10% of the previous year's turnover |
+| PL-03 | NIP shown | PASS | Found: "n Kontakt Przykładowa Firma sp. z o.o., NIP 123-456-78-90 Polityka prywatnoĹ›ci Polityka prywatno" | Art. 5 UŚUDE; art. 206 KSH | No dedicated fine for art. 5 UŚUDE; misleading consumers can trigger UOKiK fines up to 10% of the previous year's turnover |
 | PL-04 | KRS number or CEIDG entry shown (verify) | FAIL | Not found in homepage or legal pages. | Art. 5 UŚUDE; art. 206 KSH | No dedicated fine for art. 5 UŚUDE; misleading consumers can trigger UOKiK fines up to 10% of the previous year's turnover |
 | PL-05 | Share capital stated (sp. z o.o. / S.A.) (verify) | FAIL | Not found in homepage or legal pages. | Art. 206 § 1 KSH | No dedicated fine for art. 5 UŚUDE; misleading consumers can trigger UOKiK fines up to 10% of the previous year's turnover |
 | PL-07 | Privacy notice in Polish | PASS | privacy page language: pl. | Art. 12 RODO | UODO (GDPR): EUR 20M or 4% |
