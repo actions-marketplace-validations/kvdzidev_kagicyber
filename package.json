@@ -23,11 +23,16 @@
   "engines": {
     "node": ">=20"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "node --test test/*.test.js",
     "pretest": "node scripts/build-collector.mjs",
     "lint": "eslint .",
     "build:collector": "node scripts/build-collector.mjs",
+    "prepublishOnly": "npm run lint && npm test",
+    "metrics": "node scripts/metrics.mjs",
     "start": "node bin/kagicyber.js"
   },
   "keywords": [

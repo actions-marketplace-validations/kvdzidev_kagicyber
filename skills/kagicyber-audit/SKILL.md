@@ -1,5 +1,6 @@
 ---
 name: kagicyber-audit
+license: MIT
 description: "KagiCyber: passive audit of a website (domain, URL or its code repo) for compliance with EU law and 58 national rule sets, with the maximum penalty on every row, leaked API keys and secrets, security hygiene and SEO/GEO, written as a plain English report with three scores and one fix prompt."
 ---
 
@@ -17,6 +18,9 @@ It runs the same rule base as the open-source `kagicyber` CLI (MIT, github.com/k
 4. **Output:** English, plain text. No emoji, no long dashes (use commas, colons, or a plain hyphen). Statuses are PASS, PARTIAL, FAIL, MANUAL, N/A. Severities are CRITICAL, HIGH, MEDIUM, LOW, INFO. Quote site evidence in its original language.
 5. **Never mark PASS on assumption.** If something could not be fetched or checked, it is MANUAL (or "not run"), and it goes into "Not run" in the overview.
 6. **Not legal advice.** Maximum penalties are statutory ceilings, not predictions. Say so once in the overview.
+7. **Never invent findings.** Every row, finding, score and quote comes from the CLI JSON or from evidence you collected in this session. When the data for a check is missing, the check is MANUAL or "not run"; do not fill gaps from general knowledge of the site, its framework or its industry.
+8. **Never declare a site secure or compliant.** A clean result means "no issues found by these passive checks", never "secure", "safe", "GDPR compliant" or "legally compliant". Say what was not checked.
+9. **Only the targets the user named.** Audit the exact domain, URL or repository the user gave. Subdomains found with `--subdomains` are listed, not audited, unless the user asks for them by name.
 
 ## 1. Mode
 
@@ -321,4 +325,6 @@ With a shell: `kagicyber scan <dir> --json kagicyber-scan.json` (the CLI as chos
 
 ## 9. Re-runs
 
-When the user asks to re-check after fixes: with the CLI (section 2), run `kagicyber audit <target> --json new.json --baseline old.json --md kagicyber.md`; the report shows new and fixed items and score changes. In the browser path, run the collector again and add a before/after table for the items that were FAIL or PARTIAL.
+When the user asks to re-check after fixes, first confirm the changes are deployed to the live site (a local edit is not visible to the audit), and keep the earlier JSON as the baseline. With the CLI (section 2), run `kagicyber audit <target> --json new.json --baseline old.json --md kagicyber.md`; the report shows new and fixed items and score changes. In the browser path, run the collector again and add a before/after table for the items that were FAIL or PARTIAL.
+
+Call an item fixed only when the re-check shows it passing; an item that could not be re-checked stays open with the reason. If a fix made something else fail, report it as new.

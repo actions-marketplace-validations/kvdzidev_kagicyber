@@ -7,7 +7,7 @@
 /plugin install kagicyber@kagicyber
 ```
 
-Then ask `/kagicyber-audit check example.com` or `/kagicyber-audit scan this repo`.
+Then ask `/kagicyber:kagicyber-audit check example.com` or `/kagicyber:kagicyber-audit scan this repo` (skills from a plugin carry the plugin name as a prefix). To install the skill on its own, in one project or for all your projects, see [install.md](install.md); it is then `/kagicyber-audit`.
 
 The marketplace command needs the repository on GitHub to contain this plugin (`.claude-plugin/marketplace.json` at its root). To try a local checkout instead, run `/plugin marketplace add /path/to/kagicyber`, or start Claude Code with `claude --plugin-dir /path/to/kagicyber`.
 

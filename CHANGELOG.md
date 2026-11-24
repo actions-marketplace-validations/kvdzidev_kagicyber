@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/). Legal rule updates also bump the rules version shown in every report (`RULES_VERSION` in `src/version.js`).
 
-## [1.0.0] - Unreleased
+## [1.0.0] - 2026-11-25
 
 First public release.
 
@@ -37,4 +37,10 @@ First public release.
 - Secrets are masked in all outputs, including the JSON evidence; terminal output strips control characters.
 - `scan` never runs programs from the scanned repository: npm is started without a shell and `npm audit` runs on copies of the manifest and lockfile; git runs with fsmonitor, textconv and signature display turned off; symlinks and junctions are not followed. `--no-repo-ignore` refuses the scanned project's own `.kagicyberignore`.
 - Fix prompts mark site evidence as data, not instructions.
-- Unknown options and invalid values exit with code 2.
+- HTML is scanned in linear time: unclosed or unterminated tags cannot stall an audit (a page of `<div id="root"` used to take minutes).
+- Exit codes: 0 when the audit ran, 1 only when `--fail-on` or `--fail-under` is hit, 2 for every usage error (including no command) and for targets that cannot be audited. See [docs/json-output.md](docs/json-output.md).
+
+### Distribution
+- Installation guide for npx, a global install, the Claude Code project and personal skill and the plugin marketplace ([docs/install.md](docs/install.md)).
+- The skill never invents findings, never calls a site secure or compliant, audits only the targets the user names and re-checks only after the user confirms a deploy.
+- No telemetry. What the CLI sends to third parties during an audit, the public growth metrics (`npm run metrics`) and the rules for any future opt-in telemetry are in [docs/metrics.md](docs/metrics.md).

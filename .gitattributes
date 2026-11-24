@@ -1,0 +1,2 @@
+# LF everywhere, so `npm pack` produces the same files on every OS (a CRLF shebang breaks the bin on Unix).
+* text=auto eol=lf
