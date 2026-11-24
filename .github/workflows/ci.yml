@@ -8,8 +8,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
-      # temporary: let every Node version finish and report
-      fail-fast: false
       matrix:
         node: [20, 22, 24]
     steps:

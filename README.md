@@ -54,7 +54,7 @@ git clone https://github.com/kvdzidev/kagicyber.git && cd kagicyber
 node bin/kagicyber.js audit example.com
 ```
 
-The npm package is published together with the v1.0.0 GitHub release. If `npx kagicyber` reports `E404`, use the GitHub line.
+The npm package is published together with the v1.0.0 GitHub release. If `npx kagicyber` reports `E404`, use the GitHub line. Global installation, the Claude Code skill and the plugin marketplace are covered in [docs/install.md](docs/install.md).
 
 ## Quick start
 
@@ -281,14 +281,14 @@ Every finding in the JSON output has a stable `fingerprint`, used for baselines,
 
 ## Use it with Claude
 
-KagiCyber ships as a Claude Code plugin with the `/kagicyber-audit` skill:
+KagiCyber ships as a Claude Code plugin with the `kagicyber-audit` skill:
 
 ```
 /plugin marketplace add kvdzidev/kagicyber
 /plugin install kagicyber@kagicyber
 ```
 
-Then ask: `/kagicyber-audit check example.com`. In Claude Code the skill runs the CLI that ships inside the plugin (Node.js 20+ needed, nothing is downloaded) and writes the report and fix prompt in the layout above. Without a shell it collects the evidence through the browser in a single step and applies the same rule base; checks it cannot run are listed as "not run". For claude.ai, zip the `skills/kagicyber-audit` folder and upload it as a custom skill. Details: [docs/claude.md](docs/claude.md).
+Then ask: `/kagicyber:kagicyber-audit check example.com` (plugin skills are namespaced; installed as a project or personal skill it is `/kagicyber-audit`, see [docs/install.md](docs/install.md)). In Claude Code the skill runs the CLI that ships inside the plugin (Node.js 20+ needed, nothing is downloaded) and writes the report and fix prompt in the layout above. Without a shell it collects the evidence through the browser in a single step and applies the same rule base; checks it cannot run are listed as "not run". For claude.ai, zip the `skills/kagicyber-audit` folder and upload it as a custom skill. Details: [docs/claude.md](docs/claude.md).
 
 ## Use it as a library
 

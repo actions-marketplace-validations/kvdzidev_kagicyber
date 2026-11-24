@@ -127,8 +127,13 @@ export async function main(argv) {
     return 0;
   }
   if (args.help || !cmd || cmd === 'help') {
+    // No command is a usage error (2): exit code 1 is reserved for --fail-on and --fail-under.
+    if (!cmd && !args.help) {
+      console.error(HELP);
+      return 2;
+    }
     console.log(HELP);
-    return cmd || args.help ? 0 : 1;
+    return 0;
   }
   try {
     validateArgs(args);

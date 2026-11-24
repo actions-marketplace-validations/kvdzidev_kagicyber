@@ -1,7 +1,20 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseArgs } from '../src/cli.js';
+import { parseArgs, main } from '../src/cli.js';
 import { detectJurisdictions } from '../src/jurisdiction.js';
+
+test('exit codes: 0 for help and version, 2 for every usage error (1 is only for gates)', async (t) => {
+  t.mock.method(console, 'log', () => {});
+  t.mock.method(console, 'error', () => {});
+  assert.equal(await main(['--help']), 0);
+  assert.equal(await main(['--version']), 0);
+  assert.equal(await main([]), 2, 'no command');
+  assert.equal(await main(['audit']), 2, 'no target');
+  assert.equal(await main(['frobnicate']), 2, 'unknown command');
+  assert.equal(await main(['audit', 'example.com', '--nope']), 2, 'unknown option');
+  assert.equal(await main(['audit', 'example.com', '--fail-on', 'severe']), 2, 'bad --fail-on');
+  assert.equal(await main(['audit', 'a.com', 'b.com']), 2, 'two targets');
+});
 
 test('parseArgs', () => {
   const a = parseArgs(['audit', 'example.com', '--md', 'r.md', '--json', '--fail-on', 'high', '--browser']);
